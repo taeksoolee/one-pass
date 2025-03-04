@@ -13,8 +13,7 @@ const app = createApp({
 
     const reqeustIntervalRefresh = (accessToken) => {
       const decoded = new jwt_decode(accessToken);
-      const nextSec = decoded.exp - Date.now() / 1000 - 60;
-      console.log(decoded.exp, nextSec);
+      const nextSec = decoded.exp - Date.now() / 1000 - 60; // 1분 전에 갱신
       decoded.exp && setTimeout(refresh, nextSec * 1000);
     }
 
