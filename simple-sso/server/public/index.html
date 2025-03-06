@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+  <!-- idP -->
+  <h1>SSO Client</h1>
+  <form name="loginForm" action="/login" method="POST" type="application/x-www-form-urlencoded">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password">
+    <button type="submit">Login</button>
+  </form>
+
+  <!-- alert -->
+  <div id="alert">
+    <span style="color: red;"></span>
+  </div>
+
+  <script>
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get('error');
+    if (code) {
+      document.querySelector('#alert span').textContent = code;
+    }
+  </script>
+</body>
+</html>
