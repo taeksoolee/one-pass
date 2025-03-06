@@ -26,7 +26,12 @@ const app = createApp({
             'Content-Type': 'application/json',
           },
           credentials: 'include',
-        }).then(response => response.json());
+        }).then(response => {
+          if (!response.ok) {
+            throw new Error('failed');
+          }
+          return response.json();
+        });
         accessToken.value = data.accessToken;
       } catch (e) {
         accessToken.value = '';
